@@ -56,6 +56,17 @@ class AdminClMessagesController extends ModuleAdminController
      */
     public function renderForm()
     {
+
+        $options = array();
+        foreach (Customer::getCustomers() as $user)
+        {
+          $options[] = array(
+            "id_option" => (int)$user['id_customer'],
+            "name" => $user['firstname']
+          );
+        }
+
+
         //Définition du formulaire d'édition
         $this->fields_form = [
             //Entête
@@ -76,13 +87,17 @@ class AdminClMessagesController extends ModuleAdminController
                     'hint' => $this->module->l('Enter subject name') //Indication complémentaires de saisie
                 ],
                 [
-                    'type' => 'text',
+                    'type' => 'select',
                     'label' => $this->module->l('email'),
                     'name' => 'email',
-                    'class' => 'input fixed-width-sm',
-                    'size' => 5,
+                    'class' => 'input fixed-width-sm', 
                     'required' => true,
                     'empty_message' => $this->module->l('Please fill email'),
+                    'options' => [
+                        'query' => $options,
+                        'id' => 'id_option',
+                        'name' => 'name'
+                    ]
                 ],
                 [
                     'type' => 'textarea',
