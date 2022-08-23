@@ -65,21 +65,21 @@ class Cl_MessagesClient extends Module{
     protected function _installSql()
     {
         $sqlCreate = "CREATE TABLE `" . _DB_PREFIX_ . Messages::$definition['table'] . "` (
-                `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                `id_cl_messages` int(11) unsigned NOT NULL AUTO_INCREMENT,
                 `id_user` int(11) unsigned,
                 `subject` varchar(255) DEFAULT NULL,
                 `message` varchar(255) DEFAULT NULL,
                 `date_add` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 `date_upd` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-                PRIMARY KEY (`id`)
+                PRIMARY KEY (`id_cl_messages`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
  
         $sqlCreateLang = "CREATE TABLE `" . _DB_PREFIX_ . Messages::$definition['table'] . "_lang` (
-              `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+              `id_cl_messages` int(11) unsigned NOT NULL AUTO_INCREMENT,
               `id_lang` int(11) NOT NULL,
               `subject` varchar(255) DEFAULT NULL,
               `message` text,
-              PRIMARY KEY (`id`,`id_lang`)
+              PRIMARY KEY (`id_cl_messages`,`id_lang`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
  
         return Db::getInstance()->execute($sqlCreate) && Db::getInstance()->execute($sqlCreateLang);

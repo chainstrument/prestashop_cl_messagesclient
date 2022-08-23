@@ -10,7 +10,7 @@ class Messages extends ObjectModel
 
     public static $definition = [
         'table' => 'cl_messages',
-        'primary' => 'id',
+        'primary' => 'id_cl_messages',
         'multilang' => true,
         'fields' => [
             // Champs Standards
