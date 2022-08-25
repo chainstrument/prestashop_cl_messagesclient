@@ -52,7 +52,7 @@ class cl_messagesclientdisplayModuleFrontController extends ModuleFrontControlle
         $message->subject = Tools::getValue('subject');
         $message->message = Tools::getValue('message');
         $message->id_user = Tools::getValue('id_customer');
-        dump($message);
+  
         $message->save();
     }
 
